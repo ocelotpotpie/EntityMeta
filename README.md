@@ -47,7 +47,7 @@ mvn
 
 Referencing as a Dependency
 ---------------------------
-++Option 1++: Put the JAR file in a subdirectory of your project, e.g. `lib/`:
+**Option 1**: Put the JAR file in a subdirectory of your project, e.g. `lib/`:
 
 ```xml
 	<dependency>
@@ -59,7 +59,7 @@ Referencing as a Dependency
 	</dependency>
 ```
 
-++Option 2++: Install in the local Maven repository:
+**Option 2**: Install in the local Maven repository:
 ```
 mvn install:install-file -Dfile=target/EntityMeta-1.0.0.jar -DgroupId=nu.nerd \
     -DartifactId=entitymeta -Dversion=1.0.0 -Dpackaging=jar
