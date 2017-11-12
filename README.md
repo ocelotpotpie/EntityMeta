@@ -50,13 +50,13 @@ Referencing as a Dependency
 **Option 1**: Put the JAR file in a subdirectory of your project, e.g. `lib/`:
 
 ```xml
-	<dependency>
-		<groupId>nu.nerd</groupId>
-		<artifactId>entitymeta</artifactId>
-		<version>1.0.0</version>
-		<scope>system</scope>
-		<systemPath>${basedir}/lib/EntityMeta-1.0.0.jar</systemPath>
-	</dependency>
+<dependency>
+	<groupId>nu.nerd</groupId>
+	<artifactId>entitymeta</artifactId>
+	<version>1.0.0</version>
+	<scope>system</scope>
+	<systemPath>${basedir}/lib/EntityMeta-1.0.0.jar</systemPath>
+</dependency>
 ```
 
 **Option 2**: Install in the local Maven repository:
@@ -68,11 +68,11 @@ mvn install:install-file -Dfile=target/EntityMeta-1.0.0.jar -DgroupId=nu.nerd \
 and reference it from your `pom.xml` as follows:
 
 ```xml
-	<dependencies>
-		<dependency>
-			<groupId>nu.nerd</groupId>
-			<artifactId>entitymeta</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-	</dependencies>
+<dependencies>
+	<dependency>
+		<groupId>nu.nerd</groupId>
+		<artifactId>entitymeta</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+</dependencies>
 ```
