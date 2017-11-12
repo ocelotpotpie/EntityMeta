@@ -16,7 +16,7 @@ import org.bukkit.plugin.Plugin;
  * 
  * In a nutshell:
  * 
- * <pre>
+ * <pre class="brush:java">
  * // Example: Store a UUID, Location and double in an entity.
  * Plugin myPlugin;
  * Entity entity;
@@ -33,7 +33,7 @@ import org.bukkit.plugin.Plugin;
  * 
  * // Example: Enumerate all metadata set by a specific plugin.
  * String pluginName = "SomePlugin";
- *{@code for (Entry<String, MetadataEntry>} entry : EntityMeta.api().getPluginEntries(entity, pluginName)) {
+ * for (Entry&lt;String, MetadataEntry&gt; entry : EntityMeta.api().getPluginEntries(entity, pluginName)) {
  *     String key = entry.getKey(); // e.g. "SomePlugin.owner"
  *     MetadataEntry meta = entry.getValue();
  *     String className = meta.getType().getValueClass().getSimpleName();
