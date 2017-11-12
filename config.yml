@@ -1,0 +1,15 @@
+debug:
+  config: true
+  expiry: false
+
+# Set the cache size to several times the maximum expected number of entities
+# in existence at any instant, to account for churn of mobs.
+cache-size: 10000
+
+# The time in seconds that entity metadata is held in the cache after it is
+# last accessed (read or written).
+# * If you set this too low, entity metadata will be reparsed from tags 
+#   frequently resulting in more CPU load and GC churn.
+# * If you set this too high, metadata of invalid (removed) entities will 
+#   not be removed promptly.
+cache-seconds: 400

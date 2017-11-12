@@ -1,0 +1,79 @@
+name: ${project.name}
+version: ${project.version}
+author: totemo
+authors: []
+description: ${project.description}
+website: ${project.url}
+main: nu.nerd.entitymeta.EntityMeta
+
+permissions:
+  entitymeta.console:
+    description: Permission to use commands that require console access.
+    default: op
+
+  entitymeta.admin:
+    description: Permission to use in-game commands.
+    default: op
+
+commands:
+  entitymeta-reload:
+    description: Administrative command.
+    permission: entitymeta.console
+    usage: |
+      §e/<command>§f - Reload the plugin configuration. 
+  
+  entitymeta-list:
+    description: List metadata attached to the next entity you right click on. 
+    permission: entitymeta.admin
+    usage: |
+    
+      §e/<command> help§f - Show usage help.
+      §e/<command> §f[§e<plugin>§f] - List metadata attached to the next right-clicked entity, optionally restricting it to that owned by a specific plugin.
+
+  entitymeta-list-raw:
+    description: List raw metadata attached to the next entity you right click on. 
+    permission: entitymeta.admin
+    usage: |
+    
+      §e/<command> help§f - Show usage help.
+      §e/<command> §f[§e<plugin>§f] - List raw metadata attached to the next right-clicked entity, optionally restricting it to that owned by a specific plugin. Raw metadata is the serialised form of metadata.
+
+  entitymeta-find:
+    description: Find nearby entities with matching type and metadata. 
+    permission: entitymeta.admin
+    usage: |
+    
+      §e/<command> help§f - Show usage help.
+      §e/<command> <radius> <key> §f[§e<entity-type>§f] - Find entities within §e<radius>§f blocks of you that have metadata with the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f, optionally restricting results to entities of the specified Bukkit API EntityType.
+
+  entitymeta-set:
+    description: Set a metadata value on the next entity that you right click on. 
+    permission: entitymeta.admin
+    usage: |
+    
+      §e/<command> help§f - Show usage help.
+      §e/<command> <key> <type> <value>§f - Set metadata on the next right-clicked entity under the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f, with the specified §e<type>§f (given as a single-letter code or Java class name) and having the specified serialised value.
+
+  entitymeta-set-test:
+    description: Set test metadata value on the next entity that you right click on. 
+    permission: entitymeta.admin
+    usage: |
+    
+      §e/<command> help§f - Show usage help.
+      §e/<command>§f - Set multiple test metadata values on the next right-clicked entity.
+
+  entitymeta-get:
+    description: Read a metadata value from the next entity that you right click on. 
+    permission: entitymeta.admin
+    usage: |
+    
+      §e/<command> help§f - Show usage help.
+      §e/<command> <key>§f - Read metadata from the next right-clicked entity under the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f.
+
+  entitymeta-get-raw:
+    description: Read a raw metadata value from the next entity that you right click on. 
+    permission: entitymeta.admin
+    usage: |
+    
+      §e/<command> help§f - Show usage help.
+      §e/<command> <key>§f - Read raw metadata from the next right-clicked entity under the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f.
