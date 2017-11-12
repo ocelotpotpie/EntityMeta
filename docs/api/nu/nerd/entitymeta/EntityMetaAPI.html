@@ -28,6 +28,7 @@ var activeTableTab = "activeTableTab";
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
 </noscript>
+<script src="../../../syntaxhighlighter/shCore.js" type="text/javascript"></script> 						<script src="../../../syntaxhighlighter/shBrushJava.js" type="text/javascript"></script> 						<link href="../../../syntaxhighlighter/shCore.css" rel="stylesheet" type="text/css" title="Style"> 						<link href="../../../syntaxhighlighter/shThemeDefault.css" rel="stylesheet" type="text/css" title="Style">
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="topNav"><a name="navbar.top">
 <!--   -->
@@ -115,7 +116,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  
  In a nutshell:
  
- <pre>
+ <pre class="brush:java">
  // Example: Store a UUID, Location and double in an entity.
  Plugin myPlugin;
  Entity entity;
@@ -132,7 +133,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  
  // Example: Enumerate all metadata set by a specific plugin.
  String pluginName = "SomePlugin";
-<code> for (Entry&lt;String, MetadataEntry&gt;</code> entry : EntityMeta.api().getPluginEntries(entity, pluginName)) {
+ for (Entry&lt;String, MetadataEntry&gt; entry : EntityMeta.api().getPluginEntries(entity, pluginName)) {
      String key = entry.getKey(); // e.g. "SomePlugin.owner"
      MetadataEntry meta = entry.getValue();
      String className = meta.getType().getValueClass().getSimpleName();
@@ -687,6 +688,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
+<div class="aboutLanguage"><script type="text/javascript"> 						SyntaxHighlighter.defaults["auto-links"] = false; 						SyntaxHighlighter.defaults["tab-size"] = 2; 						SyntaxHighlighter.all(); 						</script></div>
 </div>
 <div class="subNav">
 <ul class="navList">
