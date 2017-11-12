@@ -1,6 +1,6 @@
 EntityMeta
 ==========
-Provides a persistent, type-safe metadata API for entities.
+Provides a persistent, type-safe metadata API for Bukkit entities.
 
 API
 ---
