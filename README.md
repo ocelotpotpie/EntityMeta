@@ -36,3 +36,43 @@ for (Entry<String, MetadataEntry> entry : EntityMeta.api().getPluginEntries(enti
     getLogger().info(key + " (" + className + ") = " + meta.getValue() + " (stored as: " + meta.getTag() + ")");
 }
 ```
+
+Building
+--------
+```sh
+git clone https://github.com/NerdNu/EntityMeta
+cd EntityMeta
+mvn
+```
+
+Referencing as a Dependency
+---------------------------
+++Option 1++: Put the JAR file in a subdirectory of your project, e.g. `lib/`:
+
+```xml
+	<dependency>
+		<groupId>nu.nerd</groupId>
+		<artifactId>entitymeta</artifactId>
+		<version>1.0.0</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/lib/EntityMeta-1.0.0.jar</systemPath>
+	</dependency>
+```
+
+++Option 2++: Install in the local Maven repository:
+```
+mvn install:install-file -Dfile=target/EntityMeta-1.0.0.jar -DgroupId=nu.nerd \
+    -DartifactId=entitymeta -Dversion=1.0.0 -Dpackaging=jar
+```
+
+and reference it from your `pom.xml` as follows:
+
+```xml
+	<dependencies>
+		<dependency>
+			<groupId>nu.nerd</groupId>
+			<artifactId>entitymeta</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
+```
