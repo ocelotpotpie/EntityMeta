@@ -8,7 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 /**
  * Configuration wrapper.
  */
-class Configuration {
+public class Configuration {
     // ------------------------------------------------------------------------
     /**
      * If true, log configuration loading.

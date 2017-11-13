@@ -18,7 +18,7 @@ public class EntityMeta extends JavaPlugin {
     /**
      * The configuration as a singleton.
      */
-    static final Configuration CONFIG = new Configuration();
+    public static final Configuration CONFIG = new Configuration();
 
     // ------------------------------------------------------------------------
     /**

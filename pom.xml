@@ -46,14 +46,6 @@
 					<include>config.yml</include>
 				</includes>
 			</resource>
-			<resource>
-				<targetPath>schematics</targetPath>
-				<filtering>false</filtering>
-				<directory>${basedir}/resources</directory>
-				<includes>
-					<include>*.schematic</include>
-				</includes>
-			</resource>
 		</resources>
 		<pluginManagement>
 			<plugins>
@@ -88,6 +80,15 @@
 						<links>
 							<link>https://hub.spigotmc.org/javadocs/spigot/</link>
 						</links>
+
+						<!-- Exclude commands and classes that need to be public just because 
+							of access from other packages. If necessary, clean up javadoc outputs with 
+							"rm docs/api/*; rm -rf docs/api/nu". Java 1.9 will reputedly add an @exclude} 
+							tag which will streamline all this. -->
+						<excludePackageNames>nu.nerd.entitymeta.commands</excludePackageNames>
+						<sourceFileExcludes>
+							<sourceFileExclude>nu/nerd/entitymeta/Configuration.java</sourceFileExclude>
+						</sourceFileExcludes>
 
 						<!-- Syntax highlighting: https://stackoverflow.com/questions/30507476/maven-javadoc-how-to-include-centralized-resources/ -->
 						<!-- See also: http://mangstacular.blogspot.com.au/2013/09/adding-syntax-highlighting-to-javadocs.html -->
