@@ -4,6 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import nu.nerd.entitymeta.commands.ReloadCommand;
+
 // ----------------------------------------------------------------------------
 /**
  * The plugin class, which provides access to the API with
@@ -40,6 +42,8 @@ public class EntityMeta extends JavaPlugin {
 
         saveDefaultConfig();
         CONFIG.reload();
+
+        getCommand("entitymeta-reload").setExecutor(new ReloadCommand());
     }
 
     // ------------------------------------------------------------------------

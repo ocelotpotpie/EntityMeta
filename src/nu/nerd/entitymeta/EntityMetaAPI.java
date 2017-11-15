@@ -98,7 +98,7 @@ public final class EntityMetaAPI {
     /**
      * A regular expression describing valid keys ({@code <plugin>.<name>}).
      */
-    public static final Pattern KEY_PATTERN = Pattern.compile("^\\w+\\.\\(?:-|\\w)+$");
+    public static final Pattern KEY_PATTERN = Pattern.compile("^\\w+\\.(?:-|\\w)+$");
 
     // ------------------------------------------------------------------------
     /**

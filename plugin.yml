@@ -52,7 +52,9 @@ commands:
     usage: |
     
       §e/<command> help§f - Show usage help.
-      §e/<command> <key> <type> <value>§f - Set metadata on the next right-clicked entity under the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f, with the specified §e<type>§f (given as a single-letter code or Java class name) and having the specified serialised value.
+      §e/<command> <key> <type> <value>§f - Set a metadata value
+        on the next right-clicked entity under the specified §e<key>§f, of
+        the form §e<plugin>§f.§e<name>§f, with the specified §e<type>§f (given as a single-letter code or Java class name) and having the specified serialised value.
 
   entitymeta-set-test:
     description: Set test metadata value on the next entity that you right click on. 
@@ -77,3 +79,12 @@ commands:
     
       §e/<command> help§f - Show usage help.
       §e/<command> <key>§f - Read raw metadata from the next right-clicked entity under the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f.
+
+  entitymeta-clear:
+    description: Clear a metadata value from the next entity that you right click on. 
+    permission: entitymeta.admin
+    usage: |
+    
+      §e/<command> help§f - Show usage help.
+      §e/<command> <key>§f - Clear a metadata value from the 
+        next right-clicked entity under the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f.
