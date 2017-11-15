@@ -1,21 +1,33 @@
 package nu.nerd.entitymeta;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import nu.nerd.entitymeta.commands.ListCommand;
 import nu.nerd.entitymeta.commands.ReloadCommand;
+import nu.nerd.entitymeta.commands.SetCommand;
 
 // ----------------------------------------------------------------------------
 /**
  * The plugin class, which provides access to the API with
  * {@link EntityMeta#api()}.
  */
-public class EntityMeta extends JavaPlugin {
+public class EntityMeta extends JavaPlugin implements Listener {
     /**
      * This plugin as a singleton.
      */
-    static EntityMeta PLUGIN;
+    public static EntityMeta PLUGIN;
 
     /**
      * The configuration as a singleton.
@@ -44,16 +56,63 @@ public class EntityMeta extends JavaPlugin {
         CONFIG.reload();
 
         getCommand("entitymeta-reload").setExecutor(new ReloadCommand());
+        getCommand("entitymeta-set").setExecutor(new SetCommand());
+        getCommand("entitymeta-list").setExecutor(new ListCommand());
+
+        Bukkit.getPluginManager().registerEvents(this, this);
     }
 
     // ------------------------------------------------------------------------
     /**
-     * @see org.bukkit.plugin.java.JavaPlugin#onCommand(org.bukkit.command.CommandSender,
-     *      org.bukkit.command.Command, java.lang.String, java.lang.String[])
+     * Handle any pending entity interactions that were set by commands.
+     * 
+     * @param event the event.
      */
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        return true;
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
+    void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+        handleInteraction(event);
+    }
+
+    // ------------------------------------------------------------------------
+    /**
+     * Handle any pending entity interactions that were set by commands.
+     * 
+     * Armour stands, at least, get {@link PlayerInteractAtEntityEvent} and not
+     * {@link PlayerInteractEvent}.
+     * 
+     * @param event the event.
+     */
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
+    void onPlayerInteractAtEntity(PlayerInteractAtEntityEvent event) {
+        handleInteraction(event);
+    }
+
+    // ------------------------------------------------------------------------
+    /**
+     * Clear any pending entity interactions on logout.
+     * 
+     * @param event the event.
+     */
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
+    void onPlayerQuit(PlayerQuitEvent event) {
+        event.getPlayer().removeMetadata(IPendingInteraction.METADATA_KEY, this);
+    }
+
+    // ------------------------------------------------------------------------
+    /**
+     * Common code for handling right click interactions.
+     * 
+     * @param event the triggering event.
+     */
+    void handleInteraction(PlayerInteractEntityEvent event) {
+        Player player = event.getPlayer();
+        List<MetadataValue> metas = player.getMetadata(IPendingInteraction.METADATA_KEY);
+        if (!metas.isEmpty()) {
+            IPendingInteraction interaction = (IPendingInteraction) metas.get(0).value();
+            interaction.onPlayerInteractEntity(event);
+            event.setCancelled(true);
+            player.removeMetadata(IPendingInteraction.METADATA_KEY, this);
+        }
     }
 
     // ------------------------------------------------------------------------

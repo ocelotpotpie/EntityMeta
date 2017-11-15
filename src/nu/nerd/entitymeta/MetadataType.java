@@ -1,5 +1,7 @@
 package nu.nerd.entitymeta;
 
+import org.bukkit.ChatColor;
+
 // ----------------------------------------------------------------------------
 /**
  * Handles the serialisation and deserialisation of metadata values of a
@@ -46,6 +48,12 @@ public abstract class MetadataType {
      */
     public Class<?> getValueClass() {
         return _class;
+    }
+
+    public String getDescription() {
+        return ChatColor.YELLOW.toString() + getCode() +
+               ChatColor.WHITE + " (" + ChatColor.GOLD + getValueClass().getName() +
+               ChatColor.WHITE + ')';
     }
 
     // ------------------------------------------------------------------------

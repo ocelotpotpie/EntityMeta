@@ -88,6 +88,7 @@
 						<excludePackageNames>nu.nerd.entitymeta.commands</excludePackageNames>
 						<sourceFileExcludes>
 							<sourceFileExclude>nu/nerd/entitymeta/Configuration.java</sourceFileExclude>
+							<sourceFileExclude>nu/nerd/entitymeta/IPendingInteraction.java</sourceFileExclude>
 						</sourceFileExcludes>
 
 						<!-- Syntax highlighting: https://stackoverflow.com/questions/30507476/maven-javadoc-how-to-include-centralized-resources/ -->

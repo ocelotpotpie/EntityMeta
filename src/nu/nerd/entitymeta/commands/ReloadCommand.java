@@ -12,7 +12,6 @@ import nu.nerd.entitymeta.EntityMeta;
  * Handles the {@code /entitymeta-reload} command.
  */
 public class ReloadCommand implements CommandExecutor {
-
     // ------------------------------------------------------------------------
     /**
      * @see org.bukkit.command.CommandExecutor#onCommand(org.bukkit.command.CommandSender,

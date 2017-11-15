@@ -100,6 +100,11 @@ public final class EntityMetaAPI {
      */
     public static final Pattern KEY_PATTERN = Pattern.compile("^\\w+\\.(?:-|\\w)+$");
 
+    /**
+     * A regular expression describing valid plugin names.
+     */
+    public static final Pattern PLUGIN_PATTERN = Pattern.compile("^\\w+$");
+
     // ------------------------------------------------------------------------
     /**
      * Set a metadata value on an {@link org.bukkit.entity.Entity}.
@@ -264,15 +269,22 @@ public final class EntityMetaAPI {
      * {@link org.bukkit.entity.Entity} that belong to a specified plugin.
      * 
      * @param entity the Entity.
-     * @param pluginName the name of the plugin.
+     * @param pluginName the name of the plugin, or null to return all entries.
      * @return all {@link MetadataEntry metadata entries} associated with an
      *         {@link org.bukkit.entity.Entity} that belong to a specified
-     *         plugin.
+     *         plugin (or all entries if the plugin name is null).
      * 
      * @throws EntityMetadataException if the entity is null.
      */
     public Map<String, MetadataEntry> getPluginEntries(Entity entity, String pluginName) throws EntityMetadataException {
-        return _store.getPluginEntries(entity, pluginName);
+        if (pluginName == null) {
+            return _store.getAllEntries(entity);
+        } else {
+            if (!PLUGIN_PATTERN.matcher(pluginName).matches()) {
+                throw new EntityMetadataException("invalid characters in plugin name");
+            }
+            return _store.getPluginEntries(entity, pluginName);
+        }
     }
 
     // ------------------------------------------------------------------------
