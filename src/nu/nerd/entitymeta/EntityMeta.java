@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import nu.nerd.entitymeta.commands.ClearCommand;
 import nu.nerd.entitymeta.commands.ListCommand;
 import nu.nerd.entitymeta.commands.ReloadCommand;
 import nu.nerd.entitymeta.commands.SetCommand;
@@ -57,6 +58,7 @@ public class EntityMeta extends JavaPlugin implements Listener {
 
         getCommand("entitymeta-reload").setExecutor(new ReloadCommand());
         getCommand("entitymeta-set").setExecutor(new SetCommand());
+        getCommand("entitymeta-clear").setExecutor(new ClearCommand());
         getCommand("entitymeta-list").setExecutor(new ListCommand());
 
         Bukkit.getPluginManager().registerEvents(this, this);
