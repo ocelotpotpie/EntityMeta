@@ -15,7 +15,22 @@ Commands
    `<key>`, of the form `<plugin>.<name>`, optionally restricting results 
    to those with the specified metadata `<type>` and `<value>`, as 
    described in `/help entitymeta-set`.
- 
+ * `/entitymeta-set <key> <type> <value>` - Set a metadata value
+   on the next right-clicked entity under the specified `<key`, of
+   the form `<plugin>.<name>`, with the specified `<type>` (given 
+   as a single-letter code or Java class name) and having the 
+   specified serialised value.
+ * `/entitymeta-set-test` - Set multiple test metadata values on 
+   the next right-clicked entity.
+ * `/entitymeta-get <key>` - Read metadata from the next right-clicked
+   entity under the specified `<key>`, of the form `<plugin>.<name>`.   
+ * `/entitymeta-get-raw <key>` - Read raw metadata from the next 
+   right-clicked entity under the specified `<key>`, of the form 
+   `<plugin>.<name>`.
+ * `/entitymeta-clear <key>` - Clear a metadata value from the next 
+   right-clicked entity under the specified `<key>`, of the form 
+   `<plugin>.<name>`.
+
 
 Permissions
 -----------
@@ -25,6 +40,7 @@ Permissions
  
  Configuration
  -------------
+ 
  | Setting         | Default | Description                         |
  | --------------- | ------  | ----------------------------------- |
  | `debug.config`  | false   | If true, log configuration loading. |
