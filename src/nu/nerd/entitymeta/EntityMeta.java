@@ -16,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import nu.nerd.entitymeta.commands.ClearCommand;
 import nu.nerd.entitymeta.commands.FindCommand;
+import nu.nerd.entitymeta.commands.GetCommand;
 import nu.nerd.entitymeta.commands.ListCommand;
 import nu.nerd.entitymeta.commands.ReloadCommand;
 import nu.nerd.entitymeta.commands.SetCommand;
@@ -59,12 +60,14 @@ public class EntityMeta extends JavaPlugin implements Listener {
         CONFIG.reload();
 
         getCommand("entitymeta-reload").setExecutor(new ReloadCommand());
-        getCommand("entitymeta-set").setExecutor(new SetCommand());
-        getCommand("entitymeta-clear").setExecutor(new ClearCommand());
         getCommand("entitymeta-list").setExecutor(new ListCommand());
         getCommand("entitymeta-list-raw").setExecutor(new ListCommand());
         getCommand("entitymeta-find").setExecutor(new FindCommand());
+        getCommand("entitymeta-set").setExecutor(new SetCommand());
         getCommand("entitymeta-set-test").setExecutor(new SetTestCommand());
+        getCommand("entitymeta-get").setExecutor(new GetCommand());
+        getCommand("entitymeta-get-raw").setExecutor(new GetCommand());
+        getCommand("entitymeta-clear").setExecutor(new ClearCommand());
 
         Bukkit.getPluginManager().registerEvents(this, this);
     }

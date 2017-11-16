@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -161,18 +161,24 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../nu/nerd/entitymeta/MetadataEntry.html#format-boolean-">format</a></span>(boolean&nbsp;raw)</code>
+<div class="block">Format this entry for presentation to the user.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../nu/nerd/entitymeta/MetadataEntry.html#getTag--">getTag</a></span>()</code>
 <div class="block">Return the serialised form of the value as a scoreboard tag, including
  the key prefix and type code.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../nu/nerd/entitymeta/MetadataType.html" title="class in nu.nerd.entitymeta">MetadataType</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../nu/nerd/entitymeta/MetadataEntry.html#getType--">getType</a></span>()</code>
 <div class="block">Return the type of the metadata value.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../nu/nerd/entitymeta/MetadataEntry.html#getValue--">getValue</a></span>()</code>
 <div class="block">Return the deserialised value.</div>
@@ -258,7 +264,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <a name="getTag--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getTag</h4>
 <pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getTag()</pre>
@@ -268,6 +274,27 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the serialised form of the value as a scoreboard tag, including
          the key prefix and type code.</dd>
+</dl>
+</li>
+</ul>
+<a name="format-boolean-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>format</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;format(boolean&nbsp;raw)</pre>
+<div class="block">Format this entry for presentation to the user.
+ 
+ Bukkit API colour codes are included to highlight the various parts of
+ the entry.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>raw</code> - if true, the raw tag is returned; otherwise the type code and
+        the value (converted to a String with <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true#toString--" title="class or interface in java.lang"><code>String.toString()</code></a>
+        are returned.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the formatted entry.</dd>
 </dl>
 </li>
 </ul>

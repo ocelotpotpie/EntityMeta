@@ -1,5 +1,7 @@
 package nu.nerd.entitymeta;
 
+import org.bukkit.ChatColor;
+
 // ----------------------------------------------------------------------------
 /**
  * Stores the Object value corresponding to a tag together with its serialised
@@ -58,6 +60,37 @@ public final class MetadataEntry {
      */
     public String getTag() {
         return _tag;
+    }
+
+    // ------------------------------------------------------------------------
+    /**
+     * Format this entry for presentation to the user.
+     * 
+     * Bukkit API colour codes are included to highlight the various parts of
+     * the entry.
+     * 
+     * @param raw if true, the raw tag is returned; otherwise the type code and
+     *        the value (converted to a String with {@link String#toString()}
+     *        are returned.
+     * @return the formatted entry.
+     */
+    public String format(boolean raw) {
+        String[] tagParts = getTag().split(":", 3);
+        String key = tagParts[0];
+        String[] keyParts = key.split("\\.", 2);
+        String pluginName = keyParts[0];
+        String name = keyParts[1];
+
+        if (raw) {
+            return ChatColor.YELLOW + pluginName + ChatColor.WHITE + '.' + ChatColor.YELLOW + name +
+                   ChatColor.GOLD + ':' + ChatColor.YELLOW + tagParts[1] +
+                   ChatColor.GOLD + ':' + ChatColor.YELLOW + tagParts[2];
+        } else {
+            return ChatColor.YELLOW + pluginName + ChatColor.WHITE + '.' + ChatColor.YELLOW + name +
+                   ChatColor.WHITE + " (" + ChatColor.GOLD + getType().getCode() +
+                   ChatColor.WHITE + ")" + ChatColor.GOLD + " -> " +
+                   ChatColor.YELLOW + getValue();
+        }
     }
 
     // ------------------------------------------------------------------------
