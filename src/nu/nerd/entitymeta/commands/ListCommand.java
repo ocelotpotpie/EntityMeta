@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 
 import nu.nerd.entitymeta.EntityMeta;
+import nu.nerd.entitymeta.EntityMetaAPI;
 import nu.nerd.entitymeta.EntityMetadataException;
 import nu.nerd.entitymeta.IPendingInteraction;
 import nu.nerd.entitymeta.MetadataEntry;
@@ -45,7 +46,7 @@ public class ListCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Invalid arguments. Try /" + command.getName() + " help.");
         } else {
             String pluginName = (args.length == 1) ? args[0] : null;
-            if (pluginName != null && !EntityMeta.api().PLUGIN_PATTERN.matcher(pluginName).matches()) {
+            if (pluginName != null && !EntityMetaAPI.PLUGIN_PATTERN.matcher(pluginName).matches()) {
                 sender.sendMessage(ChatColor.RED + pluginName + " is not a valid plugin name!");
                 return true;
             }
