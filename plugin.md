@@ -44,7 +44,8 @@ Permissions
 
  
 Configuration
-------------- 
+-------------
+
  | Setting         | Default | Description                         |
  | --------------- | ------  | ----------------------------------- |
  | `debug.config`  | false   | If true, log configuration loading. |
