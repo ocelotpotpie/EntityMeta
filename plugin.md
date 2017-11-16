@@ -1,7 +1,7 @@
 Commands
 --------
 Note: almost all commands have a `help` option, e.g. `/entitymeta-list help`.
-Equivalently, you can use `/help <command>`, e.g. `/help entitymeta-list`.
+Equivalently, you can use the `/help <command>`, e.g. `/help entitymeta-list`.
 
  * `/entitymeta-reload` - Reload the plugin configuration.
  * `/entitymeta-list [<plugin>]` - List metadata attached to the next 
