@@ -4,7 +4,7 @@ Provides a persistent, type-safe metadata API for Bukkit entities.
 
 Commands, Permissions, Configuration
 ------------------------------------
-See [this page](https://nerdnu.github.io/EntityMeta/plugin.html). 
+See [this page](https://nerdnu.github.io/EntityMeta/plugin). 
 
 
 API
