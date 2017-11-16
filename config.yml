@@ -1,5 +1,5 @@
 debug:
-  config: true
+  config: false
   expiry: false
 
 # Set the cache size to several times the maximum expected number of entities
