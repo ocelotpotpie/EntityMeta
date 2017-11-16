@@ -60,6 +60,7 @@ public class EntityMeta extends JavaPlugin implements Listener {
         getCommand("entitymeta-set").setExecutor(new SetCommand());
         getCommand("entitymeta-clear").setExecutor(new ClearCommand());
         getCommand("entitymeta-list").setExecutor(new ListCommand());
+        getCommand("entitymeta-list-raw").setExecutor(new ListCommand());
 
         Bukkit.getPluginManager().registerEvents(this, this);
     }

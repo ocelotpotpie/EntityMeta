@@ -21,7 +21,8 @@ import nu.nerd.entitymeta.MetadataType;
 
 // ----------------------------------------------------------------------------
 /**
- * Handles the {@code /entitymeta-list} command.
+ * Handles the {@code /entitymeta-list} and {@code /entitymeta-list} commands,
+ * choosing the formatting on the basis of the command name.
  */
 public class ListCommand implements CommandExecutor {
     // ------------------------------------------------------------------------
@@ -69,15 +70,25 @@ public class ListCommand implements CommandExecutor {
                                                ChatColor.GOLD + entity.getUniqueId() +
                                                pluginClause + ChatColor.GOLD + ':');
                             for (Entry<String, MetadataEntry> entry : new TreeMap<String, MetadataEntry>(entries).entrySet()) {
-                                Object value = entry.getValue().getValue();
                                 String[] keyParts = entry.getKey().split("\\.", 2);
-                                MetadataType type = entry.getValue().getType();
                                 String pluginName = keyParts[0];
                                 String name = keyParts[1];
-                                player.sendMessage(ChatColor.YELLOW + pluginName + ChatColor.WHITE + '.' + ChatColor.YELLOW + name +
-                                                   ChatColor.WHITE + " (" + ChatColor.GOLD + type.getCode() +
-                                                   ChatColor.WHITE + ")" + ChatColor.GOLD + " -> " +
-                                                   ChatColor.YELLOW + value);
+
+                                // Format raw or not based on command name.
+                                if (command.getName().equalsIgnoreCase("entitymeta-list")) {
+                                    MetadataType type = entry.getValue().getType();
+                                    Object value = entry.getValue().getValue();
+                                    player.sendMessage(ChatColor.YELLOW + pluginName + ChatColor.WHITE + '.' + ChatColor.YELLOW + name +
+                                                       ChatColor.WHITE + " (" + ChatColor.GOLD + type.getCode() +
+                                                       ChatColor.WHITE + ")" + ChatColor.GOLD + " -> " +
+                                                       ChatColor.YELLOW + value);
+                                } else {
+                                    String tag = entry.getValue().getTag();
+                                    String[] tagParts = tag.split(":", 3);
+                                    player.sendMessage(ChatColor.YELLOW + pluginName + ChatColor.WHITE + '.' + ChatColor.YELLOW + name +
+                                                       ChatColor.GOLD + ':' + ChatColor.YELLOW + tagParts[1] +
+                                                       ChatColor.GOLD + ':' + ChatColor.YELLOW + tagParts[2]);
+                                }
                             }
                         }
                     } catch (EntityMetadataException ex) {
