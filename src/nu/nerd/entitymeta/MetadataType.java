@@ -50,6 +50,12 @@ public abstract class MetadataType {
         return _class;
     }
 
+    // ------------------------------------------------------------------------
+    /**
+     * Format a human-readable description of this type.
+     * 
+     * @return a human-readable description of this type.
+     */
     public String getDescription() {
         return ChatColor.YELLOW.toString() + getCode() +
                ChatColor.WHITE + " (" + ChatColor.GOLD + getValueClass().getName() +

@@ -137,8 +137,11 @@ class PerEntityMetadata {
      * 
      * Note that the names of metadata values can only consist of hyphens and
      * Java identifier characters, i.e. (-|\w)+.
+     * 
+     * DOTALL mode is used to allow '.' to match the newlines in
+     * ConfigurationSerializable strings.
      */
-    private static final Pattern TAG_PATTERN = Pattern.compile("^(\\w+.(?:-|\\w)+):(.):(.+)$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern TAG_PATTERN = Pattern.compile("^(\\w+.(?:-|\\w)+):(.):(.+)$", Pattern.DOTALL);
 
     /**
      * A map from key (<plugin>.<name>) to {@link MetadataEntry}, which includes

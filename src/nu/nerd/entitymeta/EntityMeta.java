@@ -19,6 +19,7 @@ import nu.nerd.entitymeta.commands.FindCommand;
 import nu.nerd.entitymeta.commands.ListCommand;
 import nu.nerd.entitymeta.commands.ReloadCommand;
 import nu.nerd.entitymeta.commands.SetCommand;
+import nu.nerd.entitymeta.commands.SetTestCommand;
 
 // ----------------------------------------------------------------------------
 /**
@@ -63,6 +64,7 @@ public class EntityMeta extends JavaPlugin implements Listener {
         getCommand("entitymeta-list").setExecutor(new ListCommand());
         getCommand("entitymeta-list-raw").setExecutor(new ListCommand());
         getCommand("entitymeta-find").setExecutor(new FindCommand());
+        getCommand("entitymeta-set-test").setExecutor(new SetTestCommand());
 
         Bukkit.getPluginManager().registerEvents(this, this);
     }
