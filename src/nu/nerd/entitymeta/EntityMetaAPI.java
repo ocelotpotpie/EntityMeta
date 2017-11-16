@@ -317,6 +317,14 @@ public final class EntityMetaAPI {
 
     // ------------------------------------------------------------------------
     /**
+     * Rebuild the cache according to the new configuration settings.
+     */
+    void rebuildCache() {
+        _store.rebuildCache();
+    }
+
+    // ------------------------------------------------------------------------
+    /**
      * Implementation of metadata storage.
      */
     private static MetadataStore _store = new MetadataStore();

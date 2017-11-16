@@ -43,7 +43,10 @@ public class Configuration {
         CACHE_SECONDS = getConfig().getInt("cache-seconds");
         if (DEBUG_CONFIG) {
             getLogger().info("Configuration:");
-
+            getLogger().info("DEBUG_EXPIRY: " + DEBUG_EXPIRY);
+            getLogger().info("CACHE_SIZE: " + CACHE_SIZE);
+            getLogger().info("CACHE_SECONDS: " + CACHE_SECONDS);
+            EntityMeta.api().rebuildCache();
         }
     }
 

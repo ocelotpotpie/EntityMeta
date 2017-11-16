@@ -2,6 +2,7 @@ package nu.nerd.entitymeta;
 
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.bukkit.entity.Entity;
@@ -27,10 +28,21 @@ final class MetadataStore {
      * Constructor.
      */
     public MetadataStore() {
+        rebuildCache();
+    }
+
+    // ------------------------------------------------------------------------
+    /**
+     * Rebuild the cache according to the new configuration settings.
+     * 
+     * Since Minecraft itself is responsible for storing tags when entities are
+     * unloaded, we don't need to carry over cache entries to the new cache.
+     */
+    public void rebuildCache() {
         _entityMetadata = CacheBuilder.newBuilder()
         .weakKeys()
-        // .maximumSize(cacheSize)
-        // .expireAfterAccess(expireSeconds, TimeUnit.SECONDS)
+        .maximumSize(EntityMeta.CONFIG.CACHE_SIZE)
+        .expireAfterAccess(EntityMeta.CONFIG.CACHE_SECONDS, TimeUnit.SECONDS)
         .removalListener(REMOVAL_LISTENER)
         .build(new CacheLoader<Entity, PerEntityMetadata>() {
             @Override
@@ -200,7 +212,9 @@ final class MetadataStore {
             if (EntityMeta.CONFIG.DEBUG_EXPIRY) {
                 Logger logger = EntityMeta.PLUGIN.getLogger();
                 Entity entity = notification.getKey();
-                logger.info("Expiring " + entity.getType() + " " + entity.getUniqueId().toString());
+                String entityText = (entity != null) ? entity.getType() + " " + entity.getUniqueId()
+                                                     : "null";
+                logger.info("Expiring " + entityText + " because " + notification.getCause());
             }
         }
     };
@@ -209,6 +223,6 @@ final class MetadataStore {
      * A map from entity to its metadata, which is automatically cached on
      * get(). Weak keys are used to expire metadata automatically.
      */
-    private final LoadingCache<Entity, PerEntityMetadata> _entityMetadata;
+    private LoadingCache<Entity, PerEntityMetadata> _entityMetadata;
 
 } // class MetadataStore
