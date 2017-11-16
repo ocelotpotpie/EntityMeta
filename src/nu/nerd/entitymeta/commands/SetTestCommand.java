@@ -57,6 +57,7 @@ public class SetTestCommand implements CommandExecutor {
                         EntityMeta.api().set(entity, "Test", "l", 0x7FFF_FFFF_FFFF_FFFFL);
                         EntityMeta.api().set(entity, "Test", "f", 1.234f);
                         EntityMeta.api().set(entity, "Test", "d", 1.23456789);
+                        EntityMeta.api().set(entity, "Test", "S", "Hello world!");
                         EntityMeta.api().set(entity, "Test", "u", player.getUniqueId());
                         EntityMeta.api().set(entity, "Test", "location", player.getLocation());
                         EntityMeta.api().set(entity, "Test", "main-hand", player.getEquipment().getItemInMainHand());
