@@ -44,7 +44,7 @@ commands:
     usage: |
     
       §e/<command> help§f - Show usage help.
-      §e/<command> <radius> <key> §f[§e<entity-type>§f] - Find entities within §e<radius>§f blocks of you that have metadata with the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f, optionally restricting results to entities of the specified Bukkit API EntityType.
+      §e/<command> <entity-types> <radius> <key> §f[§e<type> <value>§f] - Find entities of the specified types - either §e*§f for any type, or a comma separated list with no spaces, e.g. §eZOMBIE,CREEPER,SKELETON§f - within §e<radius>§f blocks of you, that have metadata with the specified §e<key>§f, of the form §e<plugin>§f.§e<name>§f, optionally restricting results to those with the specified metadata §e<type>§f and §e<value>§f, as described in §e/help entitymeta-set§f.
 
   entitymeta-set:
     description: Set a metadata value on the next entity that you right click on. 
