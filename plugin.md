@@ -1,10 +1,10 @@
 Commands
 --------
  * `/entitymeta-reload` - Reload the plugin configuration.
- * `/entitymeta-list [<plugin>] - List metadata attached to the next 
+ * `/entitymeta-list [<plugin>]` - List metadata attached to the next 
    right-clicked entity, optionally restricting it to that owned by a 
    specific plugin.
- * `/entitymeta-list-raw [<plugin>] - List raw metadata attached to 
+ * `/entitymeta-list-raw [<plugin>]` - List raw metadata attached to 
    the next right-clicked entity, optionally restricting it to that 
    owned by a specific plugin. Raw metadata is the serialised form 
    of metadata.
