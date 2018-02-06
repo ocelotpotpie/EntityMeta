@@ -16,6 +16,11 @@ hs_err_pid*
 .settings
 .classpath
 
+# Idea stuff:
+.idea
+*.iml
+
 # Build:
 /classes/
 target/
+/out/
