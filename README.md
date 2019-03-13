@@ -52,32 +52,39 @@ mvn
 
 Referencing as a Dependency
 ---------------------------
-**Option 1**: Put the JAR file in a subdirectory of your project, e.g. `lib/`:
-
-```xml
-<dependency>
-	<groupId>nu.nerd</groupId>
-	<artifactId>entitymeta</artifactId>
-	<version>1.0.0</version>
-	<scope>system</scope>
-	<systemPath>${basedir}/lib/EntityMeta-1.0.0.jar</systemPath>
-</dependency>
+**Option 1**: Automatically install in the local Maven repository. This is the simplest method by far.
+```sh
+mvn clean install
 ```
 
-**Option 2**: Install in the local Maven repository:
-```
-mvn install:install-file -Dfile=target/EntityMeta-1.0.0.jar -DgroupId=nu.nerd \
-    -DartifactId=entitymeta -Dversion=1.0.0 -Dpackaging=jar
-```
-
-and reference it from your `pom.xml` as follows:
+The resulting artifact can be referenced from your `pom.xml` using:
 
 ```xml
 <dependencies>
 	<dependency>
 		<groupId>nu.nerd</groupId>
-		<artifactId>entitymeta</artifactId>
+		<artifactId>EntityMeta</artifactId>
 		<version>1.0.0</version>
 	</dependency>
 </dependencies>
+```
+
+**Option 2**: Manually install in the local Maven repository:
+```
+mvn install:install-file -Dfile=target/EntityMeta-1.0.0.jar -DgroupId=nu.nerd \
+    -DartifactId=EntityMeta -Dversion=1.0.0 -Dpackaging=jar
+```
+
+and reference the JAR with the same `pom.xml` as above.
+
+**Option 3**: Put the JAR file in a subdirectory of your project, e.g. `lib/`, and reference it directly from `pom.xml`:
+
+```xml
+<dependency>
+	<groupId>nu.nerd</groupId>
+	<artifactId>EntityMeta</artifactId>
+	<version>1.0.0</version>
+	<scope>system</scope>
+	<systemPath>${basedir}/lib/EntityMeta-1.0.0.jar</systemPath>
+</dependency>
 ```
